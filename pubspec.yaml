@@ -1,6 +1,8 @@
 name: ps_list
 description: "Utilities for getting list of running processes"
 version: 0.0.1
+repository: https://github.com/shakthizen/ps_list
+homepage: https://github.com/shakthizen/ps_list
 
 topics:
  - utility
