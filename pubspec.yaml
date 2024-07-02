@@ -8,9 +8,7 @@ topics:
  - utility
  - process
  - task
- - windows
- - macos
- - linux
+ - list
 
 platforms:
   linux:
