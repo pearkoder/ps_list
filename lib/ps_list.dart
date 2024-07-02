@@ -5,7 +5,7 @@ import 'dart:io';
 
 /// Get running processes
 class PSList {
-  Future<List<String>> _getRunningProcessesUnix() async {
+  static Future<List<String>> _getRunningProcessesUnix() async {
     final result = await Process.run("ps", ["-eo", "comm"]);
 
     final output = result.stdout
@@ -20,7 +20,7 @@ class PSList {
     return output;
   }
 
-  Future<List<String>> _getRunningProcessesWindows() async {
+  static Future<List<String>> _getRunningProcessesWindows() async {
     final result = await Process.run(
       'tasklist /FO CSV | findstr /V /C:"Image Name',
       [],
@@ -41,7 +41,7 @@ class PSList {
   /// Returns currently running processes
   ///
   /// Throws [UnsupportedError] if the current platform is not supported
-  Future<List<String>> getRunningProcesses() async {
+  static Future<List<String>> getRunningProcesses() async {
     List<String> ps = [];
     if (Platform.isWindows) {
       ps = await _getRunningProcessesWindows();
@@ -50,14 +50,14 @@ class PSList {
     } else {
       throw UnsupportedError("Unsupported Platform");
     }
-    print(ps.join("\n"));
+
     return ps;
   }
 
   /// Check whether the [process] is running
   ///
   /// Throws [UnsupportedError] if the current platform is not supported
-  Future<bool> isRunning(String process) async {
+  static Future<bool> isProcessRunning(String process) async {
     final ps = await getRunningProcesses();
     return ps
         .where((e) => e.toLowerCase().contains(process.toLowerCase()))

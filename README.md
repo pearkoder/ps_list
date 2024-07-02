@@ -1,39 +1,75 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# PSList Dart Package
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Dart package that allows you to retrieve a list of running processes and check whether a specific process is running on Linux, macOS, and Windows.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Retrieve a list of currently running processes.
+- Check whether a specific process is currently running.
+- Cross-platform support for Linux, macOS, and Windows.
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+In your `pubspec.yaml` file, add the following dependency:
+
+```yaml
+dependencies:
+  ps_list: ^1.0.0  # Replace with the latest version
+```
+
+Then, run:
+
+```bash
+$ dart pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+import 'package:ps_list/ps_list.dart';
+
+void main() async {
+  // Retrieve a list of all running processes
+  List<String> processes = await PSList.getRunningProcesses();
+
+  // Print process details
+  for (var process in processes) {
+    print('Process: $process');
+  }
+
+  // Check if a specific process is running
+  String processName = 'my_process';
+  bool isRunning = await PSList.isProcessRunning(processName);
+
+  if (isRunning) {
+    print('$processName is running.');
+  } else {
+    print('$processName is not running.');
+  }
+}
 ```
 
-## Additional information
+## API
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+### `Future<List<String>> getRunningProcesses()`
+
+Returns a list of strings representing the names of currently running processes.
+
+### `Future<bool> isProcessRunning(String processName)`
+
+Checks if a process with the specified `processName` is currently running.
+
+- Returns `true` if the process is running.
+- Returns `false` if the process is not running.
+
+## Compatibility
+
+This package is compatible with Dart 2.14.0 or higher.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request.
+
+## License
+
+This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
