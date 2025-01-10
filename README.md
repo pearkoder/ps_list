@@ -14,7 +14,7 @@ In your `pubspec.yaml` file, add the following dependency:
 
 ```yaml
 dependencies:
-  ps_list: ^1.0.0  # Replace with the latest version
+  ps_list: ^0.0.2  # Replace with the latest version
 ```
 
 Then, run:
@@ -64,7 +64,7 @@ Checks if a process with the specified `processName` is currently running.
 
 ## Compatibility
 
-This package is compatible with Dart 2.14.0 or higher.
+This package is compatible with Dart 2.12.0 or higher.
 
 ## Contributing
 

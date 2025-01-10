@@ -22,25 +22,33 @@ class PSList {
 
   static Future<List<String>> _getRunningProcessesWindows() async {
     final result = await Process.run(
-      'tasklist /FO CSV | findstr /V /C:"Image Name',
+      'tasklist /FO CSV',
       [],
     );
 
     final output = result.stdout
         .toString()
         .trim()
-        .split("\n")
-        .map((e) => e.trim())
-        .where((e) => e.isNotEmpty)
-        .map((e) => e.split("/").last)
+        .split('\n')
+        .skip(1)
+        .map((row) => row.split(',').first.replaceAll('"', '').trim())
         .toList();
 
     return output;
   }
 
-  /// Returns currently running processes
+  /// Retrieve a list of currently running processes.
   ///
-  /// Throws [UnsupportedError] if the current platform is not supported
+  /// The list is obtained via the appropriate system command for the current
+  /// platform:
+  ///
+  /// - Linux and macOS: `ps -eo comm`
+  /// - Windows: `tasklist /FO CSV`
+  ///
+  /// The returned list contains the names of the processes that are currently
+  /// running on the system.
+  ///
+  /// Throws [UnsupportedError] if the current platform is not supported.
   static Future<List<String>> getRunningProcesses() async {
     List<String> ps = [];
     if (Platform.isWindows) {
@@ -54,13 +62,32 @@ class PSList {
     return ps;
   }
 
-  /// Check whether the [process] is running
+  /// Checks if a process is currently running.
+  ///
+  /// Args:
+  ///   [process]: The name of the process to search for.
+  ///   [caseSensitive]: Whether the search should be case sensitive.
+  ///   [exactMatch]: Whether the search should be an exact match.
+  ///
+  /// Returns [true] if the process is running and [false] otherwise.
   ///
   /// Throws [UnsupportedError] if the current platform is not supported
-  static Future<bool> isProcessRunning(String process) async {
+  static Future<bool> isProcessRunning(
+    String process, {
+    bool caseSensitive = false,
+    bool exactMatch = false,
+  }) async {
     final ps = await getRunningProcesses();
-    return ps
-        .where((e) => e.toLowerCase().contains(process.toLowerCase()))
-        .isNotEmpty;
+    final result = ps.where((e) {
+      if (exactMatch) {
+        return e == process.trim();
+      } else {
+        return caseSensitive
+            ? e.contains(process.trim())
+            : e.toLowerCase().contains(process.trim().toLowerCase());
+      }
+    }).isNotEmpty;
+
+    return result;
   }
 }

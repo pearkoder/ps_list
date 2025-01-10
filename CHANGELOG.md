@@ -1,3 +1,12 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+- Initial release.
+- Added support for cross-platform process listing on Linux, macOS, and Windows.
+- Implemented `PSList.getRunningProcesses()` to retrieve running processes.
+- Implemented `PSList.isProcessRunning()` to check if a specific process is running.
+
+## 0.0.2
+
+- Added unit tests for process listing functions.
+- Updated documentation with usage examples.
+- Improved error handling for unsupported platforms.
