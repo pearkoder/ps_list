@@ -73,6 +73,26 @@ Contributions are welcome! Please feel free to submit a pull request.
 Thanks to the following people for their contributions:
 
 <!-- readme: contributors -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/shakthizen">
+                    <img src="https://avatars.githubusercontent.com/u/33683648?v=4" width="100;" alt="shakthizen"/>
+                    <br />
+                    <sub><b>Shakthi Senavirathna</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/r3sbarra">
+                    <img src="https://avatars.githubusercontent.com/u/25109979?v=4" width="100;" alt="r3sbarra"/>
+                    <br />
+                    <sub><b>r3sbarra</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: contributors -end -->
 
 ## License
