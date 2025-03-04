@@ -70,6 +70,11 @@ This package is compatible with Dart 2.12.0 or higher.
 
 Contributions are welcome! Please feel free to submit a pull request.
 
+Thanks to the following people for their contributions:
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
 ## License
 
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.

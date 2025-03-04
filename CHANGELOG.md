@@ -1,5 +1,9 @@
 ## Changelog
 
+## 0.0.4
+
+- Added `runInShell:true` option to Process.run
+
 ## 0.0.3
 
 - Update examples
