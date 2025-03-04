@@ -1,6 +1,6 @@
 name: ps_list
 description: "A Dart package that allows you to retrieve a list of running processes and check whether a specific process is running on Linux, macOS, and Windows."
-version: 0.0.3
+version: 0.0.4
 repository: https://github.com/shakthizen/ps_list
 homepage: https://github.com/shakthizen/ps_list
 
