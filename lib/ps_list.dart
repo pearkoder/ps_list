@@ -21,11 +21,7 @@ class PSList {
   }
 
   static Future<List<String>> _getRunningProcessesWindows() async {
-    final result = await Process.run(
-      'tasklist /FO CSV',
-      [],
-      runInShell: true
-    );
+    final result = await Process.run('tasklist /FO CSV', [], runInShell: true);
 
     final output = result.stdout
         .toString()
