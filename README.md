@@ -1,3 +1,5 @@
+[![.github/workflows/contributions.yml](https://github.com/pearkoder/ps_list/actions/workflows/contributions.yml/badge.svg)](https://github.com/pearkoder/ps_list/actions/workflows/contributions.yml)
+___
 # PSList Dart Package
 
 A Dart package that allows you to retrieve a list of running processes and check whether a specific process is running on Linux, macOS, and Windows.
