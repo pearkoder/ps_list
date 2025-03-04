@@ -6,7 +6,7 @@ import 'dart:io';
 /// Get running processes
 class PSList {
   static Future<List<String>> _getRunningProcessesUnix() async {
-    final result = await Process.run("ps", ["-eo", "comm"]);
+    final result = await Process.run("ps", ["-eo", "comm"], runInShell: true);
 
     final output = result.stdout
         .toString()
@@ -24,6 +24,7 @@ class PSList {
     final result = await Process.run(
       'tasklist /FO CSV',
       [],
+      runInShell: true
     );
 
     final output = result.stdout
